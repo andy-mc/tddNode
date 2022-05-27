@@ -1,34 +1,37 @@
-const mongoose = require('mongoose')
-
 const { test_api } = require('../../tests/utils')
 const Note = require('../../models/note')
-const route = '/api/notes'
+const mongoose = require('mongoose')
 
-describe('Notes', () => {
+describe('Notes Mocks', () => {
+  const route = '/api/notes'
+  const mockValue = jest.fn().mockResolvedValue
 
   const testNotes = [
     { content: 'note_a' },
     { content: 'note_b' },
   ]
+
   beforeEach(async () => {
     await Note.deleteMany({})
     await Note.insertMany(testNotes)
   })
 
-  test('', () => {})
+  const mockNotes = [{ content: 'mock_1' }, { content: 'mock_2' }]
+  beforeEach(async () => {
+    Note.find = mockValue(mockNotes)
+  })
 
-  // describe('Get', () => {
-  //   test('should return 200 and content-type application/json', async () => {
-  //     const response = await test_api.get(route)
-  //     expect(response.status).toBe(200)
-  //     expect(response.headers['content-type']).toContain('application/json')
-  //   })
+  describe('Get', () => {
+    test('should check find is called', async () => {
+      await test_api.get(route)
+      expect(Note.find).toHaveBeenCalledWith()
+    })
 
-  //   test('should return 2 notes', async () => {
-  //     const response = await test_api.get(route)
-  //     expect(response.body.length).toBe(testNotes.length)
-  //   })
-  // })
+    test('should return all model find response', async () => {
+      const response = await test_api.get(route)
+      expect(response.body).toEqual(mockNotes)
+    })
+  })
 
   // describe('Post', () => {
   //   const new_note = { content: 'new_note' }
