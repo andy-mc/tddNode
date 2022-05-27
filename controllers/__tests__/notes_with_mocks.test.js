@@ -16,9 +16,8 @@ describe('Notes Mocks', () => {
     await Note.insertMany(testNotes)
   })
 
-  const mockNotes = [{ content: 'mock_1' }, { content: 'mock_2' }]
   beforeEach(async () => {
-    Note.find = mockValue(mockNotes)
+    Note.find = mockValue()
   })
 
   describe('Get', () => {
@@ -28,6 +27,10 @@ describe('Notes Mocks', () => {
     })
 
     test('should return all model find response', async () => {
+      const mockNotes = [{ content: 'mock_1' }]
+      // mockResolvedValue can be called again on an already created mock
+      // and it will return a new mock resolved value
+      Note.find.mockResolvedValue(mockNotes)
       const response = await test_api.get(route)
       expect(response.body).toEqual(mockNotes)
     })
