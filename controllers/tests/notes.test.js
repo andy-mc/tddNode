@@ -15,13 +15,13 @@ describe('Notes', () => {
   })
 
   describe('Get', () => {
-    it('should return 200 and content-type application/json', async () => {
+    test('should return 200 and content-type application/json', async () => {
       const response = await test_api.get(route)
       expect(response.status).toBe(200)
       expect(response.headers['content-type']).toContain('application/json')
     })
 
-    fit('should return 2 notes', async () => {
+    test('should return 2 notes', async () => {
       const response = await test_api.get(route)
       expect(response.body.length).toBe(testNotes.length)
     })
