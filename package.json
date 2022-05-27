@@ -11,9 +11,9 @@
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint .",
-    "test": "jest --verbose --silent",
-    "test:detect": "jest --verbose --detectOpenHandles",
-    "test:watch": "jest --verbose --watch"
+    "test": "NODE_ENV=test jest --verbose --silent",
+    "test:detect": "NODE_ENV=test jest --verbose --detectOpenHandles",
+    "test:watch": "NODE_ENV=test jest --verbose --watch"
   },
   "author": "",
   "license": "ISC",
