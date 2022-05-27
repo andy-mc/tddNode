@@ -39,6 +39,28 @@ describe('Notes', () => {
       const saved_note = await Note.findOne({ _id: response.body._id })
       expect(saved_note.content).toBe(new_note.content)
     })
+
+    test('create a new note with out contet', async () => {
+      const response = await test_api.post(route).send({})
+      expect(response.status).toBe(400)
+      expect(response.header['content-type']).toContain('application/json')
+      expect(response.body.content).toBeUndefined()
+      expect(response.body.error).toBeDefined()
+    })
+  })
+
+  describe('Delete', () => {
+    test('delete a new note', async () => {
+      const note_to_delete = await Note.findOne({})
+      const delete_id = note_to_delete._id
+
+      const response = await test_api.delete(`${route}/${delete_id}`)
+      expect(response.status).toBe(204)
+      expect(response.error).toBe(false)
+
+      const saved_note = await Note.findById(delete_id)
+      expect(saved_note).toBe(null)
+    })
   })
 
   afterAll(() => {
