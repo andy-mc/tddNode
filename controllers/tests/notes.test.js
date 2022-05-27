@@ -61,6 +61,25 @@ describe('Notes', () => {
       const saved_note = await Note.findById(delete_id)
       expect(saved_note).toBe(null)
     })
+
+    test('delete a not existant note', async () => {
+      const before_notes = await Note.find()
+      const no_db_id = '6290cd3d0f7b34c47f14b123'
+
+      const response = await test_api.delete(`${route}/${no_db_id}`)
+      expect(response.status).toBe(204)
+      expect(response.error).toBe(false)
+
+      const after_notes = await Note.find()
+      expect(after_notes.length).toBe(before_notes.length)
+    })
+
+    test('404 for invalid request', async () => {
+      const invalid_id = '123'
+      const response = await test_api.delete(`${route}/${invalid_id}`)
+      expect(response.status).toBe(400)
+      expect(response.error).toBeDefined()
+    })
   })
 
   afterAll(() => {
