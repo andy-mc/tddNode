@@ -1,14 +1,14 @@
-const { test_api } = require('../../tests/utils')
-const Note = require('../../models/note')
-const mongoose = require('mongoose')
+const { test_api } = require("../../tests/utils")
+const Note = require("../../models/note")
+const mongoose = require("mongoose")
 
-describe('Notes Mocks', () => {
-  const route = '/api/notes'
+describe("Notes Mocks", () => {
+  const route = "/api/notes"
   const mockValue = jest.fn().mockResolvedValue
 
   const testNotes = [
-    { content: 'note_a' },
-    { content: 'note_b' },
+    { content: "note_a" },
+    { content: "note_b" },
   ]
 
   beforeEach(async () => {
@@ -20,14 +20,14 @@ describe('Notes Mocks', () => {
     Note.find = mockValue()
   })
 
-  describe('Get', () => {
-    test('should check find is called', async () => {
+  describe("Get", () => {
+    test("should check find is called", async () => {
       await test_api.get(route)
       expect(Note.find).toHaveBeenCalledWith()
     })
 
-    test('should return all model find response', async () => {
-      const mockNotes = [{ content: 'mock_1' }]
+    test("should return all model find response", async () => {
+      const mockNotes = [{ content: "mock_1" }]
       // mockResolvedValue can be called again on an already created mock
       // and it will return a new mock resolved value
       Note.find.mockResolvedValue(mockNotes)
