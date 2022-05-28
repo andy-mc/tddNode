@@ -9,4 +9,10 @@ foosRouter.get(path, (req, res) => {
   res.send({ a: 1 })
 })
 
+foosRouter.fetchCallBack = (error, cb) => {
+  setTimeout(() => {
+    cb(error, "avena")
+  }, 1000)
+}
+
 module.exports = foosRouter
