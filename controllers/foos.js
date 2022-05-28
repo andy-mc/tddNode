@@ -3,7 +3,9 @@ const foosRouter = require("express").Router()
 const path = "/"
 
 foosRouter.get(path, (req, res) => {
-  throw new Error("error foos")
+  if(req) {
+    throw new Error("error foos")
+  }
   res.send({ a: 1 })
 })
 

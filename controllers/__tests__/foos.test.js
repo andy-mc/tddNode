@@ -7,10 +7,11 @@ describe("Foos Router", () => {
 
   describe("GET", () => {
     test("should test a throw on get expect.assertions()", async () => {
-      expect.assertions(1)
+      expect.assertions(2)
 
       const response = await test_api.get(path)
-      if(response.error) {
+      if (response.error) {
+        expect(response.error.status).toBe(500)
         expect(response.error.message).toMatch(/GET.*500/)
       }
     })
