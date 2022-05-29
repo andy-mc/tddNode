@@ -11,6 +11,21 @@ async function connect() {
   }
 }
 
+async function disconnect() {
+  try {
+    await mongoose.connection.close()
+    logger.info("disconnected from MongoDB")
+  } catch (error) {
+    logger.error("error disconnecting from MongoDB:", error.message)
+  }
+}
+
+async function state() {
+  return mongoose.connection.readyState
+}
+
 module.exports = {
-  connect
+  connect,
+  disconnect,
+  state
 }

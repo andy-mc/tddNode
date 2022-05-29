@@ -1,4 +1,3 @@
-const mongoose = require("mongoose")
 
 const { test_api } = require("../../tests/utils")
 const Note = require("../../models/note")
@@ -80,9 +79,5 @@ describe("Notes", () => {
       expect(response.status).toBe(400)
       expect(response.error).toBeDefined()
     })
-  })
-
-  afterAll(() => {
-    mongoose.connection.close()
   })
 })
