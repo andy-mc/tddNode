@@ -1,8 +1,8 @@
 const db = require("../db")
 
 async function setupFiles () {
-  const db_state = await db.state()
-  if (db_state !== 1) {
+  const dbState = await db.state()
+  if (dbState === "disconnected") {
     await db.connect()
   }
 }

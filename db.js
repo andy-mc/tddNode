@@ -21,7 +21,13 @@ async function disconnect() {
 }
 
 async function state() {
-  return mongoose.connection.readyState
+  const dbStatus = {
+    0: "disconnected",
+    1: "connected",
+    2: "connecting",
+    3: "disconnecting"
+  }
+  return dbStatus[mongoose.connection.readyState]
 }
 
 module.exports = {
