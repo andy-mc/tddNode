@@ -24,7 +24,6 @@ describe("Notes", () => {
 
     test("should return 2 notes", async () => {
       const response = await test_api.get(route)
-      console.debug("response.body:", response.body)
       expect(response.body.length).toBe(testNotes.length)
     })
   })
