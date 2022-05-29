@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export default function LinkT() {
+export default function LinkT({address}) {
+  const add = (a, b) => a + b;
   return (
-    <a href="https://www.tiktok.com/es/">tikTok</a>
+    <>
+     <h2>HOla</h2>
+     <a href={address}>{add(1, 3)}</a>
+    </>
   )
 }

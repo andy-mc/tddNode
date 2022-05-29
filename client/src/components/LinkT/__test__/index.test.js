@@ -1,10 +1,12 @@
+import React from "react";
 import renderer from 'react-test-renderer';
-import LinkT from '../index';
+import LinkT from '../index.jsx';
 
 it('LinkT', () => {
   const tree = renderer
-    .create(<LinkT></LinkT>)
+    .create(<LinkT address="google.com"></LinkT>)
     .toJSON();
+
   expect(tree).toMatchSnapshot();
 });
 

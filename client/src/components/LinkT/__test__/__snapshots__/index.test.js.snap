@@ -1,9 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinkT 1`] = `
-<a
-  href="https://www.tiktok.com/es/"
->
-  tikTok
-</a>
+Array [
+  <h2>
+    HOla
+  </h2>,
+  <a
+    href="google.com"
+  >
+    4
+  </a>,
+]
 `;
