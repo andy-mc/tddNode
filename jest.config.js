@@ -60,11 +60,11 @@ module.exports = {
 
   // A path to a module which exports an async function that is triggered once before all test suites
   // globalSetup: undefined,
-  globalSetup: "<rootDir>/tests/global_setup.js",
+  globalSetup: "<rootDir>/tests/globalSetup.js",
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
-  globalTeardown: "<rootDir>/tests/global_teardown.js",
+  globalTeardown: "<rootDir>/tests/globalTeardown.js",
 
   // A set of global variables that need to be available in all test environments
   // globals: {},
@@ -134,10 +134,10 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: ["<rootDir>/tests/setupFiles.js"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ["<rootDir>/tests/setupFilesAfterEnv.js"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
