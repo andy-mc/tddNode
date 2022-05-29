@@ -22,7 +22,7 @@ describe("Notes", () => {
       expect(response.headers["content-type"]).toContain("application/json")
     })
 
-    test.only("should return 2 notes", async () => {
+    test("should return 2 notes", async () => {
       const response = await test_api.get(route)
       console.debug("response.body:", response.body)
       expect(response.body.length).toBe(testNotes.length)
