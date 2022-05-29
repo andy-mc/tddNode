@@ -5,16 +5,6 @@ describe("Notes Mocks", () => {
   const route = "/api/notes"
   const mockValue = jest.fn().mockResolvedValue
 
-  const testNotes = [
-    { content: "note_a" },
-    { content: "note_b" },
-  ]
-
-  beforeEach(async () => {
-    await Note.deleteMany({})
-    await Note.insertMany(testNotes)
-  })
-
   beforeEach(async () => {
     Note.find = mockValue()
   })

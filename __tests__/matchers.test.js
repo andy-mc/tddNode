@@ -5,9 +5,10 @@ describe("Matchers", () => {
   })
 
   describe("toBeVStoEqual", () => {
-    test("tobe and tobqual are the same", () => {
+    test("tobe and tobqual are the same", (done) => {
       reverseString("hello", (str) => {
         expect(str).toBe("olleh")
+        done()
       })
     })
   })

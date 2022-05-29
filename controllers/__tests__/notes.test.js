@@ -9,6 +9,7 @@ describe("Notes", () => {
     { content: "note_a" },
     { content: "note_b" },
   ]
+
   beforeEach(async () => {
     await Note.deleteMany({})
     await Note.insertMany(testNotes)
@@ -21,8 +22,9 @@ describe("Notes", () => {
       expect(response.headers["content-type"]).toContain("application/json")
     })
 
-    test("should return 2 notes", async () => {
+    test.only("should return 2 notes", async () => {
       const response = await test_api.get(route)
+      console.debug("response.body:", response.body)
       expect(response.body.length).toBe(testNotes.length)
     })
   })
