@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinkT 1`] = `
+exports[`LinkT renders correctly 1`] = `
 Array [
   <h2>
     HOla
   </h2>,
-  <a
-    href="google.com"
-  >
+  <a>
     7
   </a>,
 ]
